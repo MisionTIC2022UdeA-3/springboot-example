@@ -7,6 +7,7 @@ public class Task {
     private Boolean done;
     private LocalDate dueDate;
 
+
     public Task(String description, Boolean done, LocalDate dueDate){
         this.description = description;
         this.done = done;
