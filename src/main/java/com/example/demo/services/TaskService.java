@@ -2,24 +2,22 @@ package com.example.demo.services;
 
 import com.example.demo.entities.Task;
 import com.example.demo.entities.TaskList;
+import com.example.demo.repositories.TaskRepository;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
+@Service
 public class TaskService {
-    Task tarea1;
-    Task tarea2;
-    TaskList propositos;
+    private TaskRepository repository;
 
-    public TaskService(){
-        this.tarea1 = new Task("Aprender Java", false, LocalDate.of(2022,12,31) );
-        this.tarea2 = new Task("Aprender HTML", false, LocalDate.of(2022,12,31) );
-        this.propositos = new TaskList("Propositos fin de año");
-        propositos.addTask(tarea1);
-        propositos.addTask(tarea2);
+    public TaskService(TaskRepository repository){
+        this.repository = repository;
     }
 
-    public TaskList getTaskList(){
-        return this.propositos;
+    public List<Task> getTaskList(){
+        return this.repository.findAll();
     }
 
 }
