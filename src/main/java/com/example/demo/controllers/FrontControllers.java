@@ -5,6 +5,7 @@ import com.example.demo.services.TaskService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
 
@@ -26,5 +27,11 @@ public class FrontControllers {
         List<Task> tasks = this.service.getTaskList();
         model.addAttribute("tasks", tasks);
         return "tasks";
+    }
+
+    @GetMapping("/tasks/new")
+    public String newTask(Model model){
+        model.addAttribute("task", new Task());
+        return "new-task";
     }
 }

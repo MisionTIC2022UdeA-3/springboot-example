@@ -11,8 +11,11 @@
 <body>
 <main>
     <div class="px-4 py-5 my-5 text-center">
-        <h1 class="display-5 fw-bold mb-4">Mis tareas</h1>
-        <div class="d-flex gap-4 justify-content-center">
+        <div>
+            <h1 class="display-5 fw-bold mb-4">Mis tareas</h1>
+            <a href="/tasks/new" class="btn btn-secondary">Agregar nueva</a>
+        </div>
+        <div class="d-flex gap-4 justify-content-center my-4">
             <div th:each="task : ${tasks}" class="card" style="width: 18rem;">
                 <div  th:switch="${task.done}">
                     <img th:case="true" class="card-img-top" src="img/done.png" alt="Card image cap" style="width:60px">
@@ -21,8 +24,17 @@
                 <div class="card-body">
                     <h5 class="card-title" th:text="${task.description}"></h5>
                     <p class="card-text" th:text="${task.dueDate}"></p>
-                    <div th:if="${!task.done}">
-                        <a href="#" class="btn btn-primary">Finalizar tarea</a>
+                    <div class="d-flex flex-column gap-3">
+                        <div th:if="${!task.done}">
+                            <form th:action="@{/tasks/{id}(id=${task.id})}" th:method="patch">
+                                <button type="submit" class="btn btn-primary">Finalizar tarea</button>
+                            </form>
+                        </div>
+                        <div>
+                            <form th:action="@{/tasks/{id}(id=${task.id})}" th:method="delete">
+                                <button type="submit" class="btn btn-danger">Eliminar tarea</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

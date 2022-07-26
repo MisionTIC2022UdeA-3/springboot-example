@@ -1,5 +1,8 @@
 package com.example.demo.entities;
 
+import net.bytebuddy.implementation.bind.annotation.Default;
+import org.springframework.boot.context.properties.bind.DefaultValue;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -8,10 +11,10 @@ import java.time.LocalDate;
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    public long id;
     @Column(name="description")
     private String description;
-    @Column(name="done")
+    @Column(name="done", columnDefinition = "boolean default false")
     private Boolean done;
     @Column(name="dueDate")
     private LocalDate dueDate;
@@ -19,10 +22,10 @@ public class Task {
     public Task() {
     }
 
-    public Task(String description, Boolean done, LocalDate dueDate){
+    public Task(String description, LocalDate dueDate){
         this.description = description;
-        this.done = done;
         this.dueDate = dueDate;
+        this.done=false;
     }
 
     public String getDescription(){
