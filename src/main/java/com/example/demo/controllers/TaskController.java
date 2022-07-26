@@ -19,10 +19,10 @@ public class TaskController {
         this.service = service;
     }
 
-    @GetMapping("/tasks")
-    public List<Task> TaskList(){
-        return this.service.getTaskList();
-    }
+//    @GetMapping("/tasks")
+//    public List<Task> TaskList(){
+//        return this.service.getTaskList();
+//    }
 
     @PostMapping("/tasks")
     public Task createTask(@RequestBody Task task){
