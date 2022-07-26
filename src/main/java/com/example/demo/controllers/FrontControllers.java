@@ -27,4 +27,9 @@ public class FrontControllers {
         model.addAttribute("tasks", tasks);
         return "tasks";
     }
+
+    @GetMapping("/tasks/new")
+    public String newTask(){
+        return "new-task";
+    }
 }

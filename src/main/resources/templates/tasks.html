@@ -10,8 +10,11 @@
 </head>
 <body>
 <main>
-    <div class="px-4 py-5 my-5 text-center">
-        <h1 class="display-5 fw-bold mb-4">Mis tareas</h1>
+    <div >
+        <div>
+            <h1 class="display-5 fw-bold mb-4">Mis tareas</h1>
+            <a href="/tasks/new" class="btn btn-secondary">Crear nueva</a>
+        </div>
         <div class="d-flex gap-4 justify-content-center">
             <div th:each="task : ${tasks}" class="card" style="width: 18rem;">
                 <div  th:switch="${task.done}">
