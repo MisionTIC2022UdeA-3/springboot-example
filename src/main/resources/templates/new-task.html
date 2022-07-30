@@ -12,9 +12,9 @@
 <body>
 <div class="px-4 py-5 my-5 text-center d-flex flex-column align-items-center">
     <h1>Nueva Tarea</h1>
-    <form class="d-flex flex-column gap-3 align-items-center">
-        <input class="form-control" type="text" placeholder="Descripcion"/>
-        <input class="form-control" type="date" />
+    <form th:action="@{/tasks}" th:method="post" th:object="${task}" class="d-flex flex-column gap-3 align-items-center">
+        <input th:field="*{description}" class="form-control" type="text" placeholder="Descripcion"/>
+        <input th:field="*{dueDate}" class="form-control" type="date" />
         <button class="btn btn-primary" type="submit">Crear Tarea</button>
     </form>
 </div>

@@ -29,7 +29,8 @@ public class FrontControllers {
     }
 
     @GetMapping("/tasks/new")
-    public String newTask(){
+    public String newTask(Model model){
+        model.addAttribute("task", new Task());
         return "new-task";
     }
 }

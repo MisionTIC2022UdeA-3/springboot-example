@@ -10,8 +10,8 @@
 </head>
 <body>
 <main>
-    <div >
-        <div>
+    <div class="px-4 py-5 my-5 text-center d-flex flex-column align-items-center">
+        <div class="my-5g">
             <h1 class="display-5 fw-bold mb-4">Mis tareas</h1>
             <a href="/tasks/new" class="btn btn-secondary">Crear nueva</a>
         </div>
@@ -24,8 +24,17 @@
                 <div class="card-body">
                     <h5 class="card-title" th:text="${task.description}"></h5>
                     <p class="card-text" th:text="${task.dueDate}"></p>
-                    <div th:if="${!task.done}">
-                        <a href="#" class="btn btn-primary">Finalizar tarea</a>
+                    <div class="d-flex flex-column gap-3">
+                        <div th:if="${!task.done}">
+                            <form th:action="@{/tasks/{id}(id=${task.id})}"  th:method="patch">
+                                <button type="submit" class="btn btn-primary">Finalizar tarea</button>
+                            </form>
+                        </div>
+                        <div>
+                            <form th:action="@{/tasks/{id}(id=${task.id})}"  th:method="delete">
+                                <button type="submit" class="btn btn-danger">Eliminar tarea</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
